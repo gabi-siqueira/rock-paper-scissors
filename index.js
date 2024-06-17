@@ -1,94 +1,52 @@
-//Create an array (object) with the game options
-let options = ["Rock", "Paper", "Scissors"];
-//Randomize them
-let random = Math.floor(Math.random() * options.length) //Convert to string
-if (random==0) {
-    //You can declare the conditions within the if statement
-    computerTurn="Rock";
-} else if (random==1) {
-    computerTurn="Paper"
-} else {
-    computerTurn="Scissors";
+//Project description: Your game will be played against the computer. You will write a function that randomly returns “rock”, “paper” or “scissors”.
+
+//1.Create a new function named getComputerChoice in a way it will randomly return either Rock, Paper, or Scissors. 
+
+//Place the options into an Array
+const computerOptions = ["Rock", "Paper", "Scissors"];
+const randomIndex = Math.floor(Math.random() * computerOptions.length);
+const randomOption = computerOptions[randomIndex];
+
+//Create the function
+function getComputerChoice() {
+        return randomOption;
 }
 
-function getComputerChoice () {
-        return computerTurn;
+//2.Write the code so that getHumanChoice will return one of the valid choices depending on what the user inputs - using the prompt method. 
+
+const input = prompt("Let's play Rock, Paper, or Scissors! Please, type your choice:");
+const caseInsensitive = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+
+function getHumanChoice(input) {
+return caseInsensitive; 
 }
 
-//Level 2: function playRound (string) {
-    //let playerSelection = Make it case-insensitive
-    //let computerSelection = D
-    //return the winner in the format "You Lose! Paper beats Rock"
-//}
+//4.Your game will be played round by round. You will write a function that takes the human and computer player choices as arguments, plays a single round, increments the round winner’s score and logs a winner announcement.
 
-//Use prompt() to get input from the user
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
 
+//3.Your game will keep track of the players score. You will write variables to keep track of the players score. Create two new variables named humanScore and computerScore in the global scope. Initialize those variables with the value of 0.
 
+var humanScore = 0; //true
+var computerScore = 0 //true
 
-console.log(getComputerChoice());
+//6.Write the logic to play 5 rounds. You will write a function named PlayGame that calls playRound to play 5 rounds, keep track of the scores and declares a winner at the end. 
 
+//Call the function playRound 5 times.
 
+function playRound(humanSelection,computerSelection) { 
+        let result = "";
+        if (humanSelection===computerSelection) {
+                result = "It's a tie!"; 
+        } else if ((humanSelection==="Rock"&&computerSelection==="Scissors") || (humanSelection==="Paper"&&computerSelection === "Rock") || (humanSelection==="Scissors"&&computerSelection==="Paper")) {
+                result = "You won!";
+        } else {
+                result = "You lost!"
+        }
+        return result;
+        }
 
-//Level 3: function game (string) {
-//Use playRound to play a 5 round game that keeps score and reports a winner or loser at the end
-//Either loop the playRound function or write it 5 times in a row
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//SOLUTION with objects
-//let input1 = prompt("Rock, paper, scissors, Go!");
-//let input2 = prompt("Rock, paper, scissors, Go!");
-
-//function getComputerChoice (player1,player2) {
-    //if (!/^[A-Z].*$/.test(player1) || !/^[A-Z].*$/.test(player2)) {
-       // throw new Error('Arguments must start with capital letter.');
-      //}
-   //const choices = {
-    //Rock: "Scissors",
-    //Paper: "Rock",
-    //Scissors: "Paper"
-//    }
-//    if (player1===player2) {
-//     return "Tie"
-//    } else if (choices[player1]===player2) {
-//     return "Player 1 won!"
-//    } else {
-//    return "Player 2 won!"
-//    }
-// }
-
-//console.log(getComputerChoice(input1,input2));
+console.log(humanSelection);
+console.log(computerSelection);
+console.log(playRound(humanSelection,computerSelection))
