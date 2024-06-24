@@ -25,28 +25,21 @@ return caseInsensitive;
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
-
-//3.Your game will keep track of the players score. You will write variables to keep track of the players score. Create two new variables named humanScore and computerScore in the global scope. Initialize those variables with the value of 0.
-
-var humanScore = 0; //true
-var computerScore = 0 //true
-
-//6.Write the logic to play 5 rounds. You will write a function named PlayGame that calls playRound to play 5 rounds, keep track of the scores and declares a winner at the end. 
-
-//Call the function playRound 5 times.
+var humanScore = 0;
+var computerScore = 0;
 
 function playRound(humanSelection,computerSelection) { 
         let result = "";
         if (humanSelection===computerSelection) {
                 result = "It's a tie!"; 
         } else if ((humanSelection==="Rock"&&computerSelection==="Scissors") || (humanSelection==="Paper"&&computerSelection === "Rock") || (humanSelection==="Scissors"&&computerSelection==="Paper")) {
-                result = "You won!";
+                result = "You won by: " + humanScore + 1;
         } else {
-                result = "You lost!"
+                result = "You lost by: " + computerScore + 1;
         }
         return result;
         }
 
 console.log(humanSelection);
 console.log(computerSelection);
-console.log(playRound(humanSelection,computerSelection))
+console.log(playRound(humanSelection,computerSelection));
