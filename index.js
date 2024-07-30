@@ -15,17 +15,22 @@ function playRound() {
         var randomOption = computerOptions[randomIndex];
         let result = "";
         if (caseInsensitive===randomOption) {
-                result = "It's a tie!";
+                result = "It's a tie! Player II chose "+randomOption;
         } else if ((caseInsensitive==="Rock"&&randomOption==="Scissors") || (caseInsensitive==="Paper"&&randomOption==="Rock") || (caseInsensitive==="Scissors"&&randomOption==="Paper")) {
-                result = "You won!";
+                result = "You won! Player II chose "+randomOption;
                 humanScore++;
         } else {
-                result = "You lost!";
+                result = "You lost! Player II chose "+randomOption;
                 computerScore++;
                } 
         alert(result);
-        alert("You have "+humanScore+" points, and player 2 has "+computerScore+" points")
-       } while (humanScore<5 || computerScore<5)       
+        alert("You have "+humanScore+" points, and Player II has "+computerScore+" points")
+       } while (humanScore<5 && computerScore<5);
+       if (humanScore===5) {
+        alert("Congratulations! You won the game!"); 
+       } else if (computerScore===5) {
+        alert("You lost the game. Try again!");
+}
 }
 
 playRound();
